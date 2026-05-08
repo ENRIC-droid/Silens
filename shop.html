@@ -95,82 +95,43 @@
 </nav>
 <!-- END: Navigation Bar -->
 
-<main class="pt-28 md:pt-40 pb-20 px-4 md:px-8 max-w-[1800px] mx-auto">
+<main class="pt-28 md:pt-40 pb-20 px-4 md:px-8 max-w-[1200px] mx-auto">
   <!-- Shop Title -->
-  <div class="mb-12 md:mb-16">
+  <div class="mb-12 md:mb-16 text-center">
     <h1 class="text-4xl md:text-5xl font-black tracking-widest uppercase" style="font-family: 'Antic Didone', serif; font-style: italic;">Boutique</h1>
     <p class="text-gray-500 font-sans tracking-[0.1em] text-xs md:text-sm mt-3 uppercase" style="font-family: Garet, sans-serif;">Collection Automne-Hiver</p>
   </div>
 
-  <!-- Product Grid -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-2 gap-y-12 md:gap-x-4 md:gap-y-16">
+  <!-- Product Grid (2 Items) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
     
-    <!-- Item 1: Veste Face -->
-    <div class="group cursor-pointer">
-      <div class="relative aspect-[3/4] bg-[#f4f4f4] overflow-hidden mb-4 hover-image-container">
+    <!-- Item 1: Veste -->
+    <a href="veste.html" class="group block cursor-pointer">
+      <div class="relative aspect-[3/4] bg-[#f4f4f4] overflow-hidden mb-6 hover-image-container rounded-sm">
         <!-- Vitrine (Default) -->
         <img src="visuel/visuel vitrine veste face.png" alt="La veste silens" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-0">
         <!-- Essayage (Hover) -->
         <img src="visuel/visuel essayage veste face.png" alt="La veste silens essayage" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0 group-hover:opacity-100">
-        <!-- Plus icon -->
-        <div class="absolute bottom-4 right-4 text-gray-500">
-          <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
-        </div>
       </div>
-      <div class="flex justify-between items-start text-[13px] md:text-[14px] font-bold tracking-tight px-1">
+      <div class="flex justify-between items-start text-[14px] md:text-[16px] font-bold tracking-tight px-1">
         <h2 class="uppercase text-black" style="font-family: 'Space Grotesk', sans-serif;">La veste silens</h2>
         <span class="text-black">120€</span>
       </div>
-      <p class="text-[11px] md:text-xs text-gray-500 mt-1.5 px-1" style="font-family: 'Space Grotesk', sans-serif;">Gris Chiné / Vue Face</p>
-    </div>
+      <p class="text-[12px] md:text-sm text-gray-500 mt-2 px-1" style="font-family: 'Space Grotesk', sans-serif;">1 Couleur</p>
+    </a>
 
-    <!-- Item 2: Veste Dos -->
-    <div class="group cursor-pointer">
-      <div class="relative aspect-[3/4] bg-[#f4f4f4] overflow-hidden mb-4 hover-image-container">
-        <img src="visuel/visuel vitrine veste dos.png" alt="La veste silens dos" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-0">
-        <img src="visuel/visuel essayage veste dos.png" alt="La veste silens essayage dos" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0 group-hover:opacity-100">
-        <div class="absolute bottom-4 right-4 text-gray-500">
-          <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
-        </div>
-      </div>
-      <div class="flex justify-between items-start text-[13px] md:text-[14px] font-bold tracking-tight px-1">
-        <h2 class="uppercase text-black" style="font-family: 'Space Grotesk', sans-serif;">La veste silens</h2>
-        <span class="text-black">120€</span>
-      </div>
-      <p class="text-[11px] md:text-xs text-gray-500 mt-1.5 px-1" style="font-family: 'Space Grotesk', sans-serif;">Gris Chiné / Vue Dos</p>
-    </div>
-
-    <!-- Item 3: Pantalon Face -->
-    <div class="group cursor-pointer">
-      <div class="relative aspect-[3/4] bg-[#f4f4f4] overflow-hidden mb-4 hover-image-container">
+    <!-- Item 2: Pantalon -->
+    <a href="pantalon.html" class="group block cursor-pointer">
+      <div class="relative aspect-[3/4] bg-[#f4f4f4] overflow-hidden mb-6 hover-image-container rounded-sm">
         <img src="visuel/visuel vitrine pantalon face.png" alt="Le pantalon silens" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-0">
         <img src="visuel/visuel essayage pantalon face.png" alt="Le pantalon silens essayage" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0 group-hover:opacity-100">
-        <div class="absolute bottom-4 right-4 text-gray-500">
-          <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
-        </div>
       </div>
-      <div class="flex justify-between items-start text-[13px] md:text-[14px] font-bold tracking-tight px-1">
+      <div class="flex justify-between items-start text-[14px] md:text-[16px] font-bold tracking-tight px-1">
         <h2 class="uppercase text-black" style="font-family: 'Space Grotesk', sans-serif;">Le pantalon silens</h2>
         <span class="text-black">120€</span>
       </div>
-      <p class="text-[11px] md:text-xs text-gray-500 mt-1.5 px-1" style="font-family: 'Space Grotesk', sans-serif;">Gris Chiné / Vue Face</p>
-    </div>
-
-    <!-- Item 4: Pantalon Dos -->
-    <div class="group cursor-pointer">
-      <div class="relative aspect-[3/4] bg-[#f4f4f4] overflow-hidden mb-4 hover-image-container">
-        <img src="visuel/visuel vitrine pantalon dos.png" alt="Le pantalon silens dos" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-0">
-        <img src="visuel/visuel essayage pantalon dos.png" alt="Le pantalon silens essayage dos" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0 group-hover:opacity-100">
-        <div class="absolute bottom-4 right-4 text-gray-500">
-          <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
-        </div>
-      </div>
-      <div class="flex justify-between items-start text-[13px] md:text-[14px] font-bold tracking-tight px-1">
-        <h2 class="uppercase text-black" style="font-family: 'Space Grotesk', sans-serif;">Le pantalon silens</h2>
-        <span class="text-black">120€</span>
-      </div>
-      <p class="text-[11px] md:text-xs text-gray-500 mt-1.5 px-1" style="font-family: 'Space Grotesk', sans-serif;">Gris Chiné / Vue Dos</p>
-    </div>
+      <p class="text-[12px] md:text-sm text-gray-500 mt-2 px-1" style="font-family: 'Space Grotesk', sans-serif;">1 Couleur</p>
+    </a>
 
   </div>
 </main>

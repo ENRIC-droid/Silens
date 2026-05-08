@@ -50,6 +50,13 @@
     .thumb-inactive:hover {
       opacity: 1;
     }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 </style>
 </head>
 <body class="bg-white text-black font-sans antialiased overflow-x-hidden selection:bg-black selection:text-white">
@@ -99,22 +106,32 @@
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-20 items-start">
     <!-- Left Column: Vertical Scroll Gallery -->
-    <div class="flex flex-col gap-4 w-full max-w-md mx-auto md:max-w-none md:ml-auto md:mr-0 lg:max-w-[500px]">
-      <!-- Image 1 -->
-      <div class="w-full bg-[#f4f4f4] rounded-sm overflow-hidden aspect-[3/4] relative">
-        <img src="visuel/format sans arriere plan pantalon face.png" alt="Le pantalon silens face" class="w-full h-full object-contain">
+    <div class="relative w-full max-w-md mx-auto md:max-w-none md:ml-auto md:mr-0 lg:max-w-[500px]">
+      <div id="gallery-container" class="flex flex-row md:flex-col gap-4 w-full overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-hide">
+        <!-- Image 1 -->
+        <div class="w-full flex-shrink-0 snap-center bg-[#f4f4f4] rounded-sm overflow-hidden aspect-[3/4] relative">
+          <img src="visuel/format sans arriere plan pantalon face.png" alt="Le pantalon silens face" class="w-full h-full object-contain">
+        </div>
+        <!-- Image 2 -->
+        <div class="w-full flex-shrink-0 snap-center bg-[#f4f4f4] rounded-sm overflow-hidden aspect-[3/4] relative">
+          <img src="visuel/format sans arriere plan pantalon dos.png" alt="Le pantalon silens dos" class="w-full h-full object-contain">
+        </div>
+        <!-- Image 3 -->
+        <div class="w-full flex-shrink-0 snap-center bg-[#f4f4f4] rounded-sm overflow-hidden aspect-[3/4] relative">
+          <img src="visuel/format sans arriere plan pantalon face essayage.png" alt="Le pantalon silens essayage face" class="w-full h-full object-contain">
+        </div>
+        <!-- Image 4 -->
+        <div class="w-full flex-shrink-0 snap-center bg-[#f4f4f4] rounded-sm overflow-hidden aspect-[3/4] relative">
+          <img src="visuel/format sans arriere plan pantalon dos essayage.png" alt="Le pantalon silens essayage dos" class="w-full h-full object-contain">
+        </div>
       </div>
-      <!-- Image 2 -->
-      <div class="w-full bg-[#f4f4f4] rounded-sm overflow-hidden aspect-[3/4] relative">
-        <img src="visuel/format sans arriere plan pantalon dos.png" alt="Le pantalon silens dos" class="w-full h-full object-contain">
-      </div>
-      <!-- Image 3 -->
-      <div class="w-full bg-[#f4f4f4] rounded-sm overflow-hidden aspect-[3/4] relative">
-        <img src="visuel/format sans arriere plan pantalon face essayage.png" alt="Le pantalon silens essayage face" class="w-full h-full object-contain">
-      </div>
-      <!-- Image 4 -->
-      <div class="w-full bg-[#f4f4f4] rounded-sm overflow-hidden aspect-[3/4] relative">
-        <img src="visuel/format sans arriere plan pantalon dos essayage.png" alt="Le pantalon silens essayage dos" class="w-full h-full object-contain">
+      
+      <!-- Mobile Dots Indicator -->
+      <div class="absolute bottom-4 left-4 md:hidden flex items-center bg-white/80 backdrop-blur-sm rounded-full px-3 py-2 gap-2">
+        <div class="h-2 rounded-full bg-black transition-all duration-300 w-4 dot-active" id="dot-0"></div>
+        <div class="h-2 rounded-full bg-gray-400 transition-all duration-300 w-2 dot-inactive" id="dot-1"></div>
+        <div class="h-2 rounded-full bg-gray-400 transition-all duration-300 w-2 dot-inactive" id="dot-2"></div>
+        <div class="h-2 rounded-full bg-gray-400 transition-all duration-300 w-2 dot-inactive" id="dot-3"></div>
       </div>
     </div>
 
@@ -170,6 +187,33 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Gallery Scroll Logic for Mobile
+    const galleryContainer = document.getElementById('gallery-container');
+    const dots = [
+      document.getElementById('dot-0'),
+      document.getElementById('dot-1'),
+      document.getElementById('dot-2'),
+      document.getElementById('dot-3')
+    ];
+
+    if (galleryContainer && dots[0]) {
+      galleryContainer.addEventListener('scroll', () => {
+        const scrollPosition = galleryContainer.scrollLeft;
+        const itemWidth = galleryContainer.offsetWidth;
+        const activeIndex = Math.round(scrollPosition / itemWidth);
+
+        dots.forEach((dot, index) => {
+          if (index === activeIndex) {
+            dot.classList.remove('w-2', 'bg-gray-400');
+            dot.classList.add('w-4', 'bg-black');
+          } else {
+            dot.classList.remove('w-4', 'bg-black');
+            dot.classList.add('w-2', 'bg-gray-400');
+          }
+        });
+      });
+    }
+
     // Mobile Menu
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileDropdown = document.getElementById('mobile-dropdown');

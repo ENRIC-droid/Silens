@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SILENS - Shop</title>
+
+<!-- Font Setup -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Antic+Didone&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/garet" rel="stylesheet">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<!-- Custom Configuration & Styles -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Space Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            'henny-dark': '#111111',
+            'henny-light': '#f4f4f4',
+            'henny-gray': '#e5e5e5',
+          },
+        }
+      }
+    }
+</script>
+<style data-purpose="custom-utilities">
+    /* Glassmorphism effects */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Pour la page shop, on peut ajouter une ombre très légère au hover si besoin,
+       mais on garde la pureté de la référence */
+    .hover-image-container img {
+      /* Assure un rendu net */
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+</style>
+</head>
+<body class="bg-white text-black font-sans antialiased overflow-x-hidden selection:bg-black selection:text-white">
+
+<!-- BEGIN: Navigation Bar -->
+<nav class="fixed top-0 left-0 right-0 z-50 py-4 md:py-6 px-4 md:px-8 flex justify-between items-center pointer-events-none" data-purpose="main-navigation">
+<!-- Left Container: Logo + Links -->
+<div class="pointer-events-auto flex items-center gap-x-4 md:gap-x-6">
+    <a href="index.html" class="text-white font-black text-3xl md:text-4xl tracking-tighter mix-blend-difference hover:opacity-80 transition-opacity">SILENS</a>
+    <!-- Desktop Links -->
+    <div class="hidden md:flex items-center glass-panel rounded-full p-1.5 shadow-lg gap-x-1" style="border-color: rgba(0,0,0,0.1);">
+        <a class="px-5 py-2 rounded-full text-sm tracking-widest hover:bg-black hover:text-white transition-colors text-black font-semibold" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">MEN</a>
+        <a class="px-5 py-2 rounded-full text-sm tracking-widest hover:bg-black hover:text-white transition-colors text-black font-semibold" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">WOMEN</a>
+        <a class="px-5 py-2 rounded-full text-sm tracking-widest hover:bg-black hover:text-white transition-colors text-black font-semibold" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">À PROPOS</a>
+    </div>
+    <!-- Mobile Hamburger -->
+    <div class="md:hidden flex items-center glass-panel rounded-full p-1.5 shadow-lg text-black relative" style="border-color: rgba(0,0,0,0.1);">
+        <button id="mobile-menu-btn" class="p-2.5 rounded-full hover:bg-black hover:text-white transition-colors" aria-label="Menu">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </button>
+        <!-- Dropdown Menu -->
+        <div id="mobile-dropdown" class="absolute top-full left-0 mt-3 w-48 glass-panel rounded-2xl p-2 flex flex-col gap-y-1 opacity-0 pointer-events-none transform -translate-y-2 transition-all duration-300" style="background: white; border: 1px solid rgba(0,0,0,0.05);">
+            <a class="px-5 py-3 rounded-xl text-sm tracking-widest hover:bg-black hover:text-white transition-colors text-black font-semibold text-left block" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">MEN</a>
+            <a class="px-5 py-3 rounded-xl text-sm tracking-widest hover:bg-black hover:text-white transition-colors text-black font-semibold text-left block" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">WOMEN</a>
+            <a class="px-5 py-3 rounded-xl text-sm tracking-widest hover:bg-black hover:text-white transition-colors text-black font-semibold text-left block" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">À PROPOS</a>
+        </div>
+    </div>
+</div>
+<!-- Right Nav Icons -->
+<div class="pointer-events-auto flex items-center glass-panel rounded-full p-1.5 shadow-lg text-black gap-x-1" style="border-color: rgba(0,0,0,0.1);">
+<a class="p-2.5 rounded-full hover:bg-black hover:text-white transition-colors" href="#">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<a class="p-2.5 rounded-full hover:bg-black hover:text-white transition-colors" href="#">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</div>
+</nav>
+<!-- END: Navigation Bar -->
+
+<main class="pt-28 md:pt-40 pb-20 px-4 md:px-8 max-w-[1800px] mx-auto">
+  <!-- Shop Title -->
+  <div class="mb-12 md:mb-16">
+    <h1 class="text-4xl md:text-5xl font-black tracking-widest uppercase" style="font-family: 'Antic Didone', serif; font-style: italic;">Boutique</h1>
+    <p class="text-gray-500 font-sans tracking-[0.1em] text-xs md:text-sm mt-3 uppercase" style="font-family: Garet, sans-serif;">Collection Automne-Hiver</p>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-2 gap-y-12 md:gap-x-4 md:gap-y-16">
+    
+    <!-- Item 1: Veste Face -->
+    <div class="group cursor-pointer">
+      <div class="relative aspect-[3/4] bg-[#f4f4f4] overflow-hidden mb-4 hover-image-container">
+        <!-- Vitrine (Default) -->
+        <img src="visuel/visuel vitrine veste face.png" alt="La veste silens" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-0">
+        <!-- Essayage (Hover) -->
+        <img src="visuel/visuel essayage veste face.png" alt="La veste silens essayage" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0 group-hover:opacity-100">
+        <!-- Plus icon -->
+        <div class="absolute bottom-4 right-4 text-gray-500">
+          <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
+        </div>
+      </div>
+      <div class="flex justify-between items-start text-[13px] md:text-[14px] font-bold tracking-tight px-1">
+        <h2 class="uppercase text-black" style="font-family: 'Space Grotesk', sans-serif;">La veste silens</h2>
+        <span class="text-black">120€</span>
+      </div>
+      <p class="text-[11px] md:text-xs text-gray-500 mt-1.5 px-1" style="font-family: 'Space Grotesk', sans-serif;">Gris Chiné / Vue Face</p>
+    </div>
+
+    <!-- Item 2: Veste Dos -->
+    <div class="group cursor-pointer">
+      <div class="relative aspect-[3/4] bg-[#f4f4f4] overflow-hidden mb-4 hover-image-container">
+        <img src="visuel/visuel vitrine veste dos.png" alt="La veste silens dos" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-0">
+        <img src="visuel/visuel essayage veste dos.png" alt="La veste silens essayage dos" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0 group-hover:opacity-100">
+        <div class="absolute bottom-4 right-4 text-gray-500">
+          <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
+        </div>
+      </div>
+      <div class="flex justify-between items-start text-[13px] md:text-[14px] font-bold tracking-tight px-1">
+        <h2 class="uppercase text-black" style="font-family: 'Space Grotesk', sans-serif;">La veste silens</h2>
+        <span class="text-black">120€</span>
+      </div>
+      <p class="text-[11px] md:text-xs text-gray-500 mt-1.5 px-1" style="font-family: 'Space Grotesk', sans-serif;">Gris Chiné / Vue Dos</p>
+    </div>
+
+    <!-- Item 3: Pantalon Face -->
+    <div class="group cursor-pointer">
+      <div class="relative aspect-[3/4] bg-[#f4f4f4] overflow-hidden mb-4 hover-image-container">
+        <img src="visuel/visuel vitrine pantalon face.png" alt="Le pantalon silens" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-0">
+        <img src="visuel/visuel essayage pantalon face.png" alt="Le pantalon silens essayage" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0 group-hover:opacity-100">
+        <div class="absolute bottom-4 right-4 text-gray-500">
+          <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
+        </div>
+      </div>
+      <div class="flex justify-between items-start text-[13px] md:text-[14px] font-bold tracking-tight px-1">
+        <h2 class="uppercase text-black" style="font-family: 'Space Grotesk', sans-serif;">Le pantalon silens</h2>
+        <span class="text-black">120€</span>
+      </div>
+      <p class="text-[11px] md:text-xs text-gray-500 mt-1.5 px-1" style="font-family: 'Space Grotesk', sans-serif;">Gris Chiné / Vue Face</p>
+    </div>
+
+    <!-- Item 4: Pantalon Dos -->
+    <div class="group cursor-pointer">
+      <div class="relative aspect-[3/4] bg-[#f4f4f4] overflow-hidden mb-4 hover-image-container">
+        <img src="visuel/visuel vitrine pantalon dos.png" alt="Le pantalon silens dos" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-0">
+        <img src="visuel/visuel essayage pantalon dos.png" alt="Le pantalon silens essayage dos" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0 group-hover:opacity-100">
+        <div class="absolute bottom-4 right-4 text-gray-500">
+          <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"></path></svg>
+        </div>
+      </div>
+      <div class="flex justify-between items-start text-[13px] md:text-[14px] font-bold tracking-tight px-1">
+        <h2 class="uppercase text-black" style="font-family: 'Space Grotesk', sans-serif;">Le pantalon silens</h2>
+        <span class="text-black">120€</span>
+      </div>
+      <p class="text-[11px] md:text-xs text-gray-500 mt-1.5 px-1" style="font-family: 'Space Grotesk', sans-serif;">Gris Chiné / Vue Dos</p>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Menu Mobile Dropdown Logique
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileDropdown = document.getElementById('mobile-dropdown');
+
+    if(mobileMenuBtn && mobileDropdown) {
+      mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = mobileDropdown.classList.contains('opacity-100');
+        
+        if (isOpen) {
+          mobileDropdown.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+          mobileDropdown.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+        } else {
+          mobileDropdown.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2');
+          mobileDropdown.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+        }
+      });
+
+      // Fermer le menu si on clique en dehors
+      document.addEventListener('click', (e) => {
+        if (!mobileMenuBtn.contains(e.target) && !mobileDropdown.contains(e.target)) {
+          mobileDropdown.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+          mobileDropdown.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>

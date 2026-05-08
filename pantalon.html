@@ -97,32 +97,29 @@
     <a href="index.html" class="hover:text-black">Accueil</a> / <a href="shop.html" class="hover:text-black">Boutique</a> / <span class="text-black">Le pantalon silens</span>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-20">
-    <!-- Left Column: Gallery -->
-    <div class="flex flex-col gap-4 w-full max-w-md mx-auto md:max-w-none md:ml-auto md:mr-0 lg:max-w-[450px]">
-      <!-- Main Image -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-20 items-start">
+    <!-- Left Column: Vertical Scroll Gallery -->
+    <div class="flex flex-col gap-4 w-full max-w-md mx-auto md:max-w-none md:ml-auto md:mr-0 lg:max-w-[500px]">
+      <!-- Image 1 -->
       <div class="w-full bg-[#f4f4f4] rounded-sm overflow-hidden aspect-[3/4] relative">
-        <img id="main-image" src="visuel/format sans arriere plan pantalon face.png" alt="Le pantalon silens" class="w-full h-full object-contain transition-opacity duration-300">
+        <img src="visuel/format sans arriere plan pantalon face.png" alt="Le pantalon silens face" class="w-full h-full object-contain">
       </div>
-      <!-- Thumbnails -->
-      <div class="grid grid-cols-4 gap-2 md:gap-4">
-        <button class="thumbnail-btn thumb-active bg-[#f4f4f4] aspect-[3/4] rounded-sm overflow-hidden" data-src="visuel/format sans arriere plan pantalon face.png">
-          <img src="visuel/format sans arriere plan pantalon face.png" class="w-full h-full object-contain">
-        </button>
-        <button class="thumbnail-btn thumb-inactive bg-[#f4f4f4] aspect-[3/4] rounded-sm overflow-hidden" data-src="visuel/format sans arriere plan pantalon dos.png">
-          <img src="visuel/format sans arriere plan pantalon dos.png" class="w-full h-full object-contain">
-        </button>
-        <button class="thumbnail-btn thumb-inactive bg-[#f4f4f4] aspect-[3/4] rounded-sm overflow-hidden" data-src="visuel/format sans arriere plan pantalon face essayage.png">
-          <img src="visuel/format sans arriere plan pantalon face essayage.png" class="w-full h-full object-contain">
-        </button>
-        <button class="thumbnail-btn thumb-inactive bg-[#f4f4f4] aspect-[3/4] rounded-sm overflow-hidden" data-src="visuel/format sans arriere plan pantalon dos essayage.png">
-          <img src="visuel/format sans arriere plan pantalon dos essayage.png" class="w-full h-full object-contain">
-        </button>
+      <!-- Image 2 -->
+      <div class="w-full bg-[#f4f4f4] rounded-sm overflow-hidden aspect-[3/4] relative">
+        <img src="visuel/format sans arriere plan pantalon dos.png" alt="Le pantalon silens dos" class="w-full h-full object-contain">
+      </div>
+      <!-- Image 3 -->
+      <div class="w-full bg-[#f4f4f4] rounded-sm overflow-hidden aspect-[3/4] relative">
+        <img src="visuel/format sans arriere plan pantalon face essayage.png" alt="Le pantalon silens essayage face" class="w-full h-full object-contain">
+      </div>
+      <!-- Image 4 -->
+      <div class="w-full bg-[#f4f4f4] rounded-sm overflow-hidden aspect-[3/4] relative">
+        <img src="visuel/format sans arriere plan pantalon dos essayage.png" alt="Le pantalon silens essayage dos" class="w-full h-full object-contain">
       </div>
     </div>
 
-    <!-- Right Column: Product Info -->
-    <div class="md:sticky md:top-40 h-fit flex flex-col">
+    <!-- Right Column: Product Info (Sticky) -->
+    <div class="md:sticky md:top-32 h-fit flex flex-col">
       <h1 class="text-3xl md:text-5xl font-black uppercase mb-2 tracking-tight" style="font-family: 'Space Grotesk', sans-serif;">Le pantalon silens</h1>
       <p class="text-xl md:text-2xl mb-8">120€</p>
 
@@ -173,30 +170,6 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Gallery Logic
-    const mainImage = document.getElementById('main-image');
-    const thumbnails = document.querySelectorAll('.thumbnail-btn');
-
-    thumbnails.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Change Main Image
-        const newSrc = btn.getAttribute('data-src');
-        mainImage.style.opacity = '0';
-        setTimeout(() => {
-          mainImage.src = newSrc;
-          mainImage.style.opacity = '1';
-        }, 150); // small delay for fade effect
-
-        // Update active state
-        thumbnails.forEach(t => {
-          t.classList.remove('thumb-active');
-          t.classList.add('thumb-inactive');
-        });
-        btn.classList.add('thumb-active');
-        btn.classList.remove('thumb-inactive');
-      });
-    });
-
     // Mobile Menu
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileDropdown = document.getElementById('mobile-dropdown');

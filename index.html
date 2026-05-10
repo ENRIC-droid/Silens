@@ -29,6 +29,12 @@
     }
   </script>
 <style data-purpose="custom-utilities">
+    /* Prevent horizontal overflow on all devices */
+    html, body {
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
     /* Glassmorphism effects */
     .glass-panel {
       background: rgba(255, 255, 255, 0.1);
@@ -91,8 +97,8 @@
 </div>
 </div>
 <!-- Center Logo -->
-<div id="dynamic-logo" class="pointer-events-auto fixed z-[60] left-1/2 mix-blend-difference text-white" style="transform-origin: top center; will-change: transform; top: 0;">
-<a class="flex items-center space-x-6" href="#"><svg class="h-[100px] w-auto" fill="currentColor" viewBox="0 0 522.35 314.72" xmlns="http://www.w3.org/2000/svg">
+<div id="dynamic-logo" class="pointer-events-none fixed z-[60] left-1/2 mix-blend-difference text-white" style="transform-origin: top center; will-change: transform; top: 0;">
+<a class="pointer-events-auto flex items-center space-x-6" href="#"><svg class="h-[100px] w-auto" fill="currentColor" viewBox="0 0 522.35 314.72" xmlns="http://www.w3.org/2000/svg">
 <path d="M123.36,256.83c-9.55-28.75-35.68-57.2-65.1-60.87-15.24-1.9-28.34,6.3-34.41,20.37-5.72,13.28-8.26,28.4-6.17,43.09,1.45,10.14,6.9,19.05,12.35,27.49l11.76,18.21c.93,1.43.96,6.09-.24,7.18-1.37,1.25-4.46,2.03-7.54,2.42C10.31,280.98-.13,232.35,27.01,199.37c14.3-17.37,36.66-24.06,57.7-16.21,25.82,9.64,43,35.55,53.59,60.61,11.21,26.53,34.46,56.9,64.37,53.43,14.18-1.65,25.41-10.33,33.7-21.62l11.64,2.03c-8.27,15.96-21.77,26.54-38.42,31.24-23.39,6.59-47.91,0-65.27-16.91-10.02-9.76-16.38-21.32-20.96-35.11Z"></path>
 <path d="M24.44,144.26C-8.04,115.64-4.71,65.48,14.45,28.19c2.7-.22,5.92.04,7.66.9s2.18,5.79,1.28,7.71l-9.68,20.77c-3.75,8.05-7.6,17.09-7.79,26.34-.33,15.61,4.44,31.22,12.6,43.99,8.64,13.52,23.92,18.75,38.75,13.72,29.09-9.86,48.87-40.92,54.3-71.15,6.7-37.27,37.6-64.52,75.41-60.7,18.14,1.83,34.08,11.04,44.41,25.7l-11.14,3.54c-8.74-8.35-19.51-15.57-32.49-16.39-29.66-1.89-49.9,27.92-58.13,54.71-4.48,14.59-8.43,28.66-16.06,41.89-7.04,12.21-15.62,22.72-27.5,30.21-19.76,12.47-44.05,10.32-61.64-5.18Z"></path>
 <path d="M279.53,35.47c6.92-12.67,17.25-21.96,30.67-27.45,38.08-15.58,79.29,6.95,91.51,45.05,7.63,23.79,22.09,44.33,43.72,57.26,7.06,4.22,14.72,7.08,22.87,8.14,14.74,1.91,27.83-5.6,34.11-19.18,6.29-13.6,8.83-29.22,6.72-44.43-1.35-9.76-6.66-18.61-11.87-26.66l-12.32-19.06c-1.28-1.99-.27-6.56,1.35-7.78,1.95-1.47,6.36-2.07,7.63-.12,11.4,17.6,19.38,35.85,21.52,56.48,2.07,20.01-2.1,39.47-13.86,55.16-16.34,21.79-44.22,28-67.86,14.51-20.13-11.48-34.72-32.23-43.78-53.66-11.27-26.69-32.81-58.32-63.23-56.7-14.55.77-26.43,8.87-35.14,20.48l-12.03-2.04Z"></path>
@@ -231,30 +237,33 @@
 
     function updateLogo() {
       const scrollY = window.scrollY;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
       
       // L'animation suit proportionnellement le scroll sur les 400 premiers pixels
       const maxScroll = 400; 
       let progress = scrollY / maxScroll;
       progress = Math.min(1, Math.max(0, progress));
       
-      // On calcule l'échelle de départ en fonction de l'écran pour ne pas déborder sur mobile
-      const isMobile = window.innerWidth < 768;
-      const maxDesktopScale = 1;
-      const maxMobileScale = Math.min(1, (window.innerWidth - 40) / 600); // 600px est la largeur max du logo
-      const startScale = isMobile ? maxMobileScale : maxDesktopScale;
+      const isMobile = vw < 768;
       
-      // L'échelle finale est de 0.25 (ce qui transforme le texte 120px en 30px, parfait pour la nav)
+      // La largeur naturelle du logo (SVG + texte + gap) est environ 600px à scale 1
+      // On calcule un startScale qui garantit que le logo ne dépasse JAMAIS l'écran
+      const logoNaturalWidth = 600;
+      const maxSafeScale = (vw - 32) / logoNaturalWidth; // 16px de marge de chaque côté
+      const startScale = Math.min(isMobile ? 0.6 : 1, maxSafeScale);
+      
+      // L'échelle finale est de 0.25
       const endScale = 0.25; 
       const currentScale = startScale - ((startScale - endScale) * progress);
       
       // Position Y dynamique
-      const logoVisualHeight = 120; // la hauteur du logo non scalé
-      const yStart = (window.innerHeight / 2) - (logoVisualHeight / 2); // centré à l'écran
-      const yEnd = isMobile ? 25 : 34; // s'adapte au padding de la navbar sur mobile (py-4) et desktop (py-6)
+      const logoVisualHeight = 120;
+      const yStart = (vh / 2) - (logoVisualHeight * currentScale / 2);
+      const yEnd = isMobile ? 20 : 34;
       
       const currentY = yStart - ((yStart - yEnd) * progress);
       
-      // On applique la transformation exacte sans déclencher de transition CSS (pas de tremblement)
       logo.style.transform = `translate(-50%, ${currentY}px) scale(${currentScale})`;
       ticking = false;
     }
@@ -262,7 +271,7 @@
     // Calcul initial au chargement
     updateLogo();
 
-    // Event listener très performant (requestAnimationFrame) pour éviter les saccades/tremblements
+    // Event listener très performant (requestAnimationFrame) pour éviter les saccades
     window.addEventListener('scroll', () => {
       if (!ticking) {
         window.requestAnimationFrame(updateLogo);
@@ -277,13 +286,18 @@
       }
     });
 
+    // Recalculer après orientation change (important sur iOS)
+    window.addEventListener('orientationchange', () => {
+      setTimeout(updateLogo, 100);
+    });
+
     // Menu Mobile Dropdown Logique
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileDropdown = document.getElementById('mobile-dropdown');
 
     if(mobileMenuBtn && mobileDropdown) {
       mobileMenuBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Évite que le clic sur le bouton ferme immédiatement le menu via le listener du document
+        e.stopPropagation();
         const isOpen = mobileDropdown.classList.contains('opacity-100');
         
         if (isOpen) {
@@ -307,3 +321,4 @@
 </script>
 </body>
 </html>
+

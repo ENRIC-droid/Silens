@@ -63,38 +63,58 @@
 
 <!-- BEGIN: Navigation Bar -->
 <nav class="fixed top-0 left-0 right-0 z-50 py-4 md:py-6 px-4 md:px-8 flex justify-between items-center pointer-events-none" data-purpose="main-navigation">
-<div class="pointer-events-auto flex items-center gap-x-4 md:gap-x-6">
-    <a href="index.html" class="text-white font-black text-3xl md:text-4xl tracking-tighter hover:opacity-80 transition-opacity">SILENS</a>
-    <div class="hidden md:flex items-center glass-panel rounded-full p-1.5 shadow-lg gap-x-1" style="border-color: rgba(0,0,0,0.1);">
-        <a class="px-5 py-2 rounded-full text-sm tracking-widest hover:bg-black hover:text-white transition-colors text-black font-semibold" href="shop.html" style="font-family: 'Playfair Display', serif; font-weight: 700;">SHOP</a>
-        <a class="px-5 py-2 rounded-full text-sm tracking-widest hover:bg-black hover:text-white transition-colors text-black font-semibold" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">WOMEN</a>
-        <a class="px-5 py-2 rounded-full text-sm tracking-widest hover:bg-black hover:text-white transition-colors text-black font-semibold" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">À PROPOS</a>
-    </div>
-    <div class="md:hidden flex items-center glass-panel rounded-full p-1.5 shadow-lg text-black relative" style="border-color: rgba(0,0,0,0.1);">
-        <button id="mobile-menu-btn" class="p-2.5 rounded-full hover:bg-black hover:text-white transition-colors" aria-label="Menu">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-        </button>
-        <div id="mobile-dropdown" class="absolute top-full left-0 mt-3 w-48 glass-panel rounded-2xl p-2 flex flex-col gap-y-1 opacity-0 pointer-events-none transform -translate-y-2 transition-all duration-300" style="background: white; border: 1px solid rgba(0,0,0,0.05);">
-            <a class="px-5 py-3 rounded-xl text-sm tracking-widest hover:bg-black hover:text-white transition-colors text-black font-semibold text-left block" href="shop.html" style="font-family: 'Playfair Display', serif; font-weight: 700;">SHOP</a>
-            <a class="px-5 py-3 rounded-xl text-sm tracking-widest hover:bg-black hover:text-white transition-colors text-black font-semibold text-left block" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">WOMEN</a>
-            <a class="px-5 py-3 rounded-xl text-sm tracking-widest hover:bg-black hover:text-white transition-colors text-black font-semibold text-left block" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">À PROPOS</a>
+    <!-- Left Menu Links -->
+    <div class="pointer-events-auto flex items-center">
+        <div class="hidden md:flex items-center glass-panel rounded-full p-1.5 shadow-lg gap-x-1" style="border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.4);">
+            <a class="px-5 py-2 rounded-full text-sm tracking-widest hover:bg-white/30 transition-colors text-black font-semibold" href="shop.html" style="font-family: 'Playfair Display', serif; font-weight: 700;">SHOP</a>
+            <a class="px-5 py-2 rounded-full text-sm tracking-widest hover:bg-white/30 transition-colors text-black font-semibold" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">WOMEN</a>
+            <a class="px-5 py-2 rounded-full text-sm tracking-widest hover:bg-white/30 transition-colors text-black font-semibold" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">À PROPOS</a>
+        </div>
+        
+        <div class="md:hidden flex items-center glass-panel rounded-full p-1.5 shadow-lg text-black relative" style="border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.4);">
+            <button id="mobile-menu-btn" class="p-2.5 rounded-full hover:bg-white/30 transition-colors" aria-label="Menu">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+            <div id="mobile-dropdown" class="absolute top-full left-0 mt-3 w-48 glass-panel rounded-2xl p-2 flex flex-col gap-y-1 opacity-0 pointer-events-none transform -translate-y-2 transition-all duration-300" style="background: white; border: 1px solid rgba(255,255,255,0.3);">
+                <a class="px-5 py-3 rounded-xl text-sm tracking-widest hover:bg-white/30 transition-colors text-black font-semibold text-left block" href="shop.html" style="font-family: 'Playfair Display', serif; font-weight: 700;">SHOP</a>
+                <a class="px-5 py-3 rounded-xl text-sm tracking-widest hover:bg-white/30 transition-colors text-black font-semibold text-left block" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">WOMEN</a>
+                <a class="px-5 py-3 rounded-xl text-sm tracking-widest hover:bg-white/30 transition-colors text-black font-semibold text-left block" href="#" style="font-family: 'Playfair Display', serif; font-weight: 700;">À PROPOS</a>
+            </div>
         </div>
     </div>
-</div>
-<div class="pointer-events-auto flex items-center glass-panel rounded-full p-1.5 shadow-lg text-black gap-x-1" style="border-color: rgba(0,0,0,0.1);">
-<a class="p-2.5 rounded-full hover:bg-black hover:text-white transition-colors" href="#">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</a>
-<a class="p-2.5 rounded-full hover:bg-black hover:text-white transition-colors" href="#">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</a>
-</div>
+
+    <!-- Center Logo -->
+    <div class="pointer-events-auto absolute left-1/2 -translate-x-1/2 flex items-center">
+        <a href="index.html" class="flex items-center space-x-2 md:space-x-3 text-white mix-blend-difference hover:opacity-80 transition-opacity">
+            <svg class="h-7 md:h-9 w-auto" fill="currentColor" viewBox="0 0 522.35 314.72" xmlns="http://www.w3.org/2000/svg">
+                <path d="M123.36,256.83c-9.55-28.75-35.68-57.2-65.1-60.87-15.24-1.9-28.34,6.3-34.41,20.37-5.72,13.28-8.26,28.4-6.17,43.09,1.45,10.14,6.9,19.05,12.35,27.49l11.76,18.21c.93,1.43.96,6.09-.24,7.18-1.37,1.25-4.46,2.03-7.54,2.42C10.31,280.98-.13,232.35,27.01,199.37c14.3-17.37,36.66-24.06,57.7-16.21,25.82,9.64,43,35.55,53.59,60.61,11.21,26.53,34.46,56.9,64.37,53.43,14.18-1.65,25.41-10.33,33.7-21.62l11.64,2.03c-8.27,15.96-21.77,26.54-38.42,31.24-23.39,6.59-47.91,0-65.27-16.91-10.02-9.76-16.38-21.32-20.96-35.11Z"></path>
+                <path d="M24.44,144.26C-8.04,115.64-4.71,65.48,14.45,28.19c2.7-.22,5.92.04,7.66.9s2.18,5.79,1.28,7.71l-9.68,20.77c-3.75,8.05-7.6,17.09-7.79,26.34-.33,15.61,4.44,31.22,12.6,43.99,8.64,13.52,23.92,18.75,38.75,13.72,29.09-9.86,48.87-40.92,54.3-71.15,6.7-37.27,37.6-64.52,75.41-60.7,18.14,1.83,34.08,11.04,44.41,25.7l-11.14,3.54c-8.74-8.35-19.51-15.57-32.49-16.39-29.66-1.89-49.9,27.92-58.13,54.71-4.48,14.59-8.43,28.66-16.06,41.89-7.04,12.21-15.62,22.72-27.5,30.21-19.76,12.47-44.05,10.32-61.64-5.18Z"></path>
+                <path d="M279.53,35.47c6.92-12.67,17.25-21.96,30.67-27.45,38.08-15.58,79.29,6.95,91.51,45.05,7.63,23.79,22.09,44.33,43.72,57.26,7.06,4.22,14.72,7.08,22.87,8.14,14.74,1.91,27.83-5.6,34.11-19.18,6.29-13.6,8.83-29.22,6.72-44.43-1.35-9.76-6.66-18.61-11.87-26.66l-12.32-19.06c-1.28-1.99-.27-6.56,1.35-7.78,1.95-1.47,6.36-2.07,7.63-.12,11.4,17.6,19.38,35.85,21.52,56.48,2.07,20.01-2.1,39.47-13.86,55.16-16.34,21.79-44.22,28-67.86,14.51-20.13-11.48-34.72-32.23-43.78-53.66-11.27-26.69-32.81-58.32-63.23-56.7-14.55.77-26.43,8.87-35.14,20.48l-12.03-2.04Z"></path>
+                <path d="M467.07,168.38c-28.39,8.15-49.77,38.85-55.4,67.56-2.59,13.21-6.47,25.09-14.19,36.12-15.78,22.56-43.06,33.51-70.03,27.44-15.13-3.41-27.67-11.98-36.57-24.27l11.54-3.46c20.39,20.68,47.73,22.4,68.06.76,12.25-13.04,19.69-29.26,24.44-46.62,6.92-25.33,19.74-51.73,42.29-65.37,18.06-10.92,39.91-9.84,56.82,2.74,11.7,8.71,19.66,20.61,24.13,34.62,9.06,28.4,2.45,58.54-10.42,84.75-2.77-.07-5.91-.45-7.52-1.21s-2.33-5.49-1.49-7.3l9.65-20.7c3.95-8.47,7.96-17.69,8.03-27.38.11-15.01-4.34-29.66-11.79-42.13-8.01-13.41-22.57-19.86-37.53-15.57Z"></path>
+                <path d="M303.99,141.77c-5.48,4.76-13.74,3.79-18.4-2.04-10.24-12.79-13.9-37.6-16.88-55.95l-.45-2.75c-.13-.77,2.7-.61,4.59-.48,1.52,23.43,12.28,44.55,31.14,61.22Z"></path>
+                <path d="M253.91,228.76l-3.94-.14c-.87-.03-1.04-2.72-1.16-3.87-2.45-22.45-14.34-41.64-30.75-56.16,26.11-14.31,31.3,35.87,35.85,60.17Z"></path>
+                <path d="M278.32,227.98l.24-7.75c.76-24.66,1.57-67.9,26.95-57.42-14.74,17.14-23.27,37.5-22.82,59.86l-.2,3.7c-.05.94-2.23,1.24-4.17,1.61Z"></path>
+                <path d="M242.31,115.93c-.58,9.48-2.77,18.32-6.69,25.96-3.68,7.17-11.67,9.85-18.88,5.96,14.46-16.91,23.34-37.22,22.83-59.69-.03-1.16.22-3.55.45-4.43.28-1.1,3.79-.96,4.28-.25l-1.99,32.45Z"></path>
+            </svg>
+            <span class="font-black text-3xl md:text-5xl tracking-tighter uppercase">SILENS</span>
+        </a>
+    </div>
+
+    <!-- Right Nav Icons -->
+    <div class="pointer-events-auto flex items-center glass-panel rounded-full p-1.5 shadow-lg text-black gap-x-1" style="border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.4);">
+        <a class="p-2.5 rounded-full hover:bg-white/30 transition-colors" href="#">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </a>
+        <a class="p-2.5 rounded-full hover:bg-white/30 transition-colors" href="#">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </a>
+    </div>
 </nav>
 <!-- END: Navigation Bar -->
 
